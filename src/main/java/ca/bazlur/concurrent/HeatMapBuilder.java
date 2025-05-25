@@ -1,4 +1,4 @@
-package demo.concurrent;
+package ca.bazlur.concurrent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +31,7 @@ public class HeatMapBuilder {
         List<String> results = new ArrayList<>();
 
         // Using structured concurrency with a custom scope that continues on failure
-        try (var scope = new StructuredTaskScope<String>() {
-            @Override
-            protected void handleComplete(Subtask<? extends String> subtask) {
-                // Do nothing special when a subtask completes (either success or failure)
-            }
-        }) {
-
+        try (var scope = StructuredTaskScope.open(StructuredTaskScope.Joiner.awaitAll())) {
             // Fork subtasks for each region
             List<Subtask<String>> futures = regions.stream()
                 .map(region -> scope.fork(() -> processRegion(region)))

@@ -41,7 +41,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>demo.Main</mainClass>
+                                    <mainClass>ca.bazlur.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -54,7 +54,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec.plugin.version}</version>
                 <configuration>
-                    <mainClass>demo.Main</mainClass>
+                    <mainClass>ca.bazlur.Main</mainClass>
                     <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     <arguments></arguments>
                     <systemProperties>

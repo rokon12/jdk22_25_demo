@@ -1,4 +1,4 @@
-package demo.model;
+package ca.bazlur.model;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,9 +1,11 @@
-package demo;
+package ca.bazlur;
 
-import demo.concurrent.DataFetcher;
-import demo.concurrent.DeadlineDemo;
-import demo.concurrent.HeatMapBuilder;
-import demo.gatherers.GathererDemo;
+import ca.bazlur.concurrent.DataFetcher;
+import ca.bazlur.concurrent.DeadlineDemo;
+import ca.bazlur.concurrent.FirstWinDemo;
+import ca.bazlur.concurrent.HeatMapBuilder;
+import ca.bazlur.concurrent.NestedScopesDemo;
+import ca.bazlur.gatherers.GathererDemo;
 
 /**
  * CLI parser & orchestrator for JDK 22-25 feature demos.
@@ -29,13 +31,21 @@ public class Main {
                     }
                     NativeLibraryDemo.run(args[1]);
                 }
-                case "--inspect" -> {
+                case "--generate" -> {
                     if (args.length < 2) {
-                        System.out.println("Error: --inspect requires a class file path");
+                        System.out.println("Error: --generate requires an output path");
                         printUsage();
                         return;
                     }
-                    ClassFileInspector.run(args[1]);
+                    GenerateHelloWorldClass.run(args[1]);
+                }
+                case "--generate-complex" -> {
+                    if (args.length < 2) {
+                        System.out.println("Error: --generate-complex requires an output path");
+                        printUsage();
+                        return;
+                    }
+                    GenerateComplexClass.run(args[1]);
                 }
                 case "--help" -> printUsage();
                 default -> {
@@ -51,30 +61,37 @@ public class Main {
 
     private static void runConcurrentDemo() throws Exception {
         System.out.println("=== Running Structured Concurrency Demos ===");
-        
+
         System.out.println("\n1. ShutdownOnFailure scope (DataFetcher):");
         DataFetcher.run();
-        
+
         System.out.println("\n2. ContinueOnFailure scope (HeatMapBuilder):");
         HeatMapBuilder.run();
-        
+
         System.out.println("\n3. Deadline-capped scope (DeadlineDemo):");
         DeadlineDemo.run();
+
+        System.out.println("\n4. FirstWin scope (FirstWinDemo):");
+        FirstWinDemo.run();
+
+        System.out.println("\n5. Nested Scopes demo (NestedScopesDemo):");
+        NestedScopesDemo.run();
     }
 
     private static void printUsage() {
         System.out.println("""
             JDK 22-25 Feature-Rich CLI Showcase
-            
+
             Usage: java --enable-preview --enable-native-access=ALL-UNNAMED -jar jdk22-25-cli-demo.jar [COMMAND]
-            
+
             Commands:
               --concurrent     Run structured concurrency demos
               --gather         Run stream gatherers demo
               --scoped         Run scoped values demo
               --primitive      Run primitive pattern switch demo
               --native TEXT    Run FFM API demo with TEXT as input
-              --inspect PATH   Run Class-File API on the specified class file
+              --generate PATH  Generate a HelloWorld class file at the specified path
+              --generate-complex PATH  Generate a MathUtil class with multiple methods
               --help           Show this help message
             """);
     }

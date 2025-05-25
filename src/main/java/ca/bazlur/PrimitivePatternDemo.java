@@ -1,4 +1,4 @@
-package demo;
+package ca.bazlur;
 
 import java.util.ArrayList;
 import java.util.List;

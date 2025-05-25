@@ -1,4 +1,4 @@
-package demo;
+package ca.bazlur;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;

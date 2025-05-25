@@ -1,4 +1,4 @@
-package demo.gatherers;
+package ca.bazlur.gatherers;
 
 import java.util.ArrayList;
 import java.util.List;

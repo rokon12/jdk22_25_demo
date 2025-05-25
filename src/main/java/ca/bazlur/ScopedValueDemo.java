@@ -1,4 +1,4 @@
-package demo;
+package ca.bazlur;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
