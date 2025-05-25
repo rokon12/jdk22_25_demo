@@ -23,7 +23,7 @@ public class ScopedValueDemo {
         processRequest("POST /api/orders", "admin456", "tenant-xyz");
     }
     
-    private static void processRequest(String requestPath, String userId, String tenantId) {
+    private static void  processRequest(String requestPath, String userId, String tenantId) {
         // Create request context
         RequestContext context = new RequestContext(requestPath, userId, System.currentTimeMillis());
         

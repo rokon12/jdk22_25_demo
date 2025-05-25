@@ -6,6 +6,8 @@ import ca.bazlur.concurrent.FirstWinDemo;
 import ca.bazlur.concurrent.HeatMapBuilder;
 import ca.bazlur.concurrent.NestedScopesDemo;
 import ca.bazlur.gatherers.GathererDemo;
+import ca.bazlur.model.DataPoint;
+import ca.bazlur.model.UserInputTask;
 
 /**
  * CLI parser & orchestrator for JDK 22-25 feature demos.
@@ -23,14 +25,7 @@ public class Main {
                 case "--gather" -> GathererDemo.run();
                 case "--scoped" -> ScopedValueDemo.run();
                 case "--primitive" -> PrimitivePatternDemo.run();
-                case "--native" -> {
-                    if (args.length < 2) {
-                        System.out.println("Error: --native requires a string argument");
-                        printUsage();
-                        return;
-                    }
-                    NativeLibraryDemo.run(args[1]);
-                }
+                case "--native" -> NativeLibraryDemo.run();
                 case "--generate" -> {
                     if (args.length < 2) {
                         System.out.println("Error: --generate requires an output path");
@@ -47,6 +42,7 @@ public class Main {
                     }
                     GenerateComplexClass.run(args[1]);
                 }
+                case "--model" -> runModelDemo();
                 case "--help" -> printUsage();
                 default -> {
                     System.out.println("Unknown command: " + args[0]);
@@ -78,6 +74,41 @@ public class Main {
         NestedScopesDemo.run();
     }
 
+    private static void runModelDemo() {
+        System.out.println("=== Running Model Class Demos ===");
+
+        // Demonstrate DataPoint record patterns and unnamed patterns
+        System.out.println("\n1. DataPoint record patterns and unnamed patterns:");
+
+        // Create a sample DataPoint
+        DataPoint samplePoint = DataPoint.createSample();
+        System.out.println("Sample DataPoint: " + samplePoint);
+
+        // Demonstrate summarize method (uses record pattern matching with unnamed patterns)
+        System.out.println("\nSummarized DataPoint:");
+        System.out.println(DataPoint.summarize(samplePoint));
+
+        // Demonstrate categorize method (uses record pattern matching in switch expressions)
+        System.out.println("\nCategorized DataPoint:");
+        System.out.println(DataPoint.categorize(samplePoint));
+
+        // Create a sequential DataPoint (with a previous point)
+        DataPoint sequentialPoint = DataPoint.createSequential();
+        System.out.println("\nSequential DataPoint:");
+        System.out.println(DataPoint.summarize(sequentialPoint));
+        System.out.println(DataPoint.categorize(sequentialPoint));
+
+        // Demonstrate UserInputTask flexible constructor bodies
+        System.out.println("\n2. UserInputTask flexible constructor bodies:");
+
+        // Create a sample UserInputTask
+        UserInputTask sampleTask = UserInputTask.createSample();
+
+        // Execute the task
+        System.out.println("\nExecuting UserInputTask:");
+        sampleTask.execute();
+    }
+
     private static void printUsage() {
         System.out.println("""
             JDK 22-25 Feature-Rich CLI Showcase
@@ -92,6 +123,7 @@ public class Main {
               --native TEXT    Run FFM API demo with TEXT as input
               --generate PATH  Generate a HelloWorld class file at the specified path
               --generate-complex PATH  Generate a MathUtil class with multiple methods
+              --model          Run model class demos (record patterns, unnamed patterns, flexible constructor bodies)
               --help           Show this help message
             """);
     }
