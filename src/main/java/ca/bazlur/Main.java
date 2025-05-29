@@ -6,6 +6,7 @@ import ca.bazlur.gatherers.GathererDemo;
 import ca.bazlur.model.DataPoint;
 import ca.bazlur.model.UserInputTask;
 import ca.bazlur.scopevalue.ScopedValueDemo;
+import ca.bazlur.stablevalue.StableValuesDemo;
 
 /**
  * CLI parser & orchestrator for JDK 22-25 feature demos.
@@ -24,6 +25,7 @@ public class Main {
                 case "--scoped" -> ScopedValueDemo.run();
                 case "--primitive" -> PrimitivePatternDemo.run();
                 case "--native" -> NativeLibraryDemo.run();
+                case "--stable" -> StableValuesDemo.run();
                 case "--generate" -> {
                     if (args.length < 2) {
                         System.out.println("Error: --generate requires an output path");
@@ -100,6 +102,7 @@ public class Main {
               --scoped              Run scoped values demo
               --primitive           Run primitive pattern switch demo
               --native              Run FFM API demo with TEXT as input
+              --stable              Run stable values demo
               --generate PATH       Generate a HelloWorld class file at the specified path
               --generate-complex    PATH  Generate a MathUtil class with multiple methods
               --model               Run model class demos (record patterns, unnamed patterns, flexible constructor bodies)
