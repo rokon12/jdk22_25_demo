@@ -1,6 +1,5 @@
 package ca.bazlur.concurrency;
 
-import io.micrometer.core.annotation.Timed;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
