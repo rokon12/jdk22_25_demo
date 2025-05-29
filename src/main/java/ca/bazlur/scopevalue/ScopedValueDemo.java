@@ -1,4 +1,4 @@
-package ca.bazlur;
+package ca.bazlur.scopevalue;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -93,4 +93,8 @@ public class ScopedValueDemo {
     
     // Immutable record for tenant information
     private record TenantInfo(String id, String region) {}
+
+    void main(){
+        run();
+    }
 }

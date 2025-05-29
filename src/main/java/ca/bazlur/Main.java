@@ -5,6 +5,7 @@ import ca.bazlur.concurrency.A_ConcurrencyDemo;
 import ca.bazlur.gatherers.GathererDemo;
 import ca.bazlur.model.DataPoint;
 import ca.bazlur.model.UserInputTask;
+import ca.bazlur.scopevalue.ScopedValueDemo;
 
 /**
  * CLI parser & orchestrator for JDK 22-25 feature demos.
