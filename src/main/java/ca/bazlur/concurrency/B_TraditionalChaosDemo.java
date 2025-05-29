@@ -17,7 +17,6 @@ public class B_TraditionalChaosDemo {
 
     private static final ExecutorService executor = Executors.newCachedThreadPool();
 
-    @Timed("order-processing")
     public static void run() {
         System.out.println("Demonstrating traditional concurrent chaos with ExecutorService...");
 
