@@ -1,4 +1,4 @@
-package ca.bazlur.concurrent;
+package ca.bazlur.concurrency;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Demonstrates structured concurrency with ContinueOnFailure scope.
  * This scope continues executing all subtasks even if some of them fail.
  */
-public class HeatMapBuilder {
+public class Z2_HeatMapBuilder {
 
     public static void run() throws Exception {
         List<String> regions = List.of("North", "South", "East", "West", "Central");

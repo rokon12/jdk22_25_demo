@@ -7,11 +7,21 @@ This project demonstrates various features introduced in JDK 25 Early Access bui
 The project includes examples of the following JDK features:
 
 ### Structured Concurrency
-- Joiner.awaitAllSuccessfulOrThrow() scope (DataFetcher)
-- Joiner.awaitAll() scope (HeatMapBuilder)
-- Deadline-capped (Joiner.anySuccessfulResultOrThrow() with config) scope (DeadlineDemo)
-- FirstWin scope (Joiner.<String>anySuccessfulResultOrThrow()) (FirstWinDemo)
-- Nested Scopes (NestedScopesDemo)
+- Progressive examples from traditional concurrency to advanced structured concurrency patterns:
+  - A_ConferenceDemo: Main entry point showcasing all concurrency examples
+  - B_TraditionalChaosDemo: Problems with traditional concurrent programming
+  - C_FirstStructuredScopeDemo: Basic structured concurrency
+  - D_RacingToWinDemo: The "Racing to Win" pattern for fastest response
+  - E_AllOrNothingDemo: The "All or Nothing" pattern for distributed transactions
+  - F_CustomJoinerDemo: Custom intelligence with smart joiners
+  - G_DeadlineAwareDemo: Deadline-aware processing
+  - H_NestedScopeDemo: Hierarchical nested scope architecture
+- Additional specialized examples:
+  - Z1_DataFetcher: Joiner.awaitAllSuccessfulOrThrow() scope
+  - Z2_HeatMapBuilder: Joiner.awaitAll() scope
+  - Z3_DeadlineDemo: Deadline-capped (Joiner.anySuccessfulResultOrThrow() with config) scope
+  - Z4_FirstWinDemo: FirstWin scope (Joiner.<String>anySuccessfulResultOrThrow())
+  - Z5_NestedScopesDemo: Complex nested scopes
 
 ### Stream Gatherers
 - Examples of the new Stream Gatherers API for more powerful stream processing
@@ -67,7 +77,41 @@ For the Foreign Function & Memory API demos:
 
 ## Usage
 
-Run the demo application with:
+### Using the Run Script
+
+The easiest way to run the demo is using the provided scripts:
+
+#### For Unix/Linux/macOS:
+```
+./run_demo.sh [OPTIONS]
+```
+
+#### For Windows:
+```
+run_demo.bat [OPTIONS]
+```
+
+Options:
+- `--build`: Build the project before running (default: false)
+- `--concurrent`: Run structured concurrency demos
+- `--gather`: Run stream gatherers demo
+- `--scoped`: Run scoped values demo
+- `--primitive`: Run primitive pattern switch demo
+- `--native`: Run Foreign Function & Memory API demo
+- `--generate PATH`: Generate a HelloWorld class file at the specified path
+- `--generate-complex PATH`: Generate a MathUtil class with multiple methods
+- `--model`: Run model class demos
+- `--help`: Show this help message
+
+Examples:
+```
+./run_demo.sh --build --concurrent    # Build and run concurrency demos
+./run_demo.sh --gather                # Run gatherers demo without building
+```
+
+### Manual Execution
+
+Alternatively, you can run the demo application directly with:
 
 ```
 java --enable-preview --enable-native-access=ALL-UNNAMED -jar target/jdk22-25-demo-1.0-SNAPSHOT.jar [COMMAND]
@@ -75,7 +119,7 @@ java --enable-preview --enable-native-access=ALL-UNNAMED -jar target/jdk22-25-de
 
 Available commands:
 
-- `--concurrent`: Run structured concurrency demos
+- `--concurrent`: Run structured concurrency demos (A_ConferenceDemo with progressive examples)
 - `--gather`: Run stream gatherers demo
 - `--scoped`: Run scoped values demo
 - `--primitive`: Run primitive pattern switch demo
@@ -88,7 +132,10 @@ Available commands:
 ## Project Structure
 
 - `src/main/java/ca/bazlur/`: Main Java source files
-  - `concurrent/`: Structured concurrency examples
+  - `concurrency/`: Structured concurrency examples with alphabetical prefixes for logical flow
+    - `A_ConferenceDemo.java`: Main entry point for the concurrency demo
+    - `B_TraditionalChaosDemo.java` through `H_NestedScopeDemo.java`: Progressive concurrency examples
+    - `Z1_DataFetcher.java` through `Z5_NestedScopesDemo.java`: Additional specialized examples
   - `gatherers/`: Stream gatherers examples
   - `model/`: Model classes for pattern matching demos
 - `native/`: Native C code for Foreign Function & Memory API demos

@@ -1,10 +1,7 @@
 package ca.bazlur;
 
-import ca.bazlur.concurrent.DataFetcher;
-import ca.bazlur.concurrent.DeadlineDemo;
-import ca.bazlur.concurrent.FirstWinDemo;
-import ca.bazlur.concurrent.HeatMapBuilder;
-import ca.bazlur.concurrent.NestedScopesDemo;
+
+import ca.bazlur.concurrency.A_ConcurrencyDemo;
 import ca.bazlur.gatherers.GathererDemo;
 import ca.bazlur.model.DataPoint;
 import ca.bazlur.model.UserInputTask;
@@ -21,7 +18,7 @@ public class Main {
 
         try {
             switch (args[0]) {
-                case "--concurrent" -> runConcurrentDemo();
+                case "--concurrent" -> A_ConcurrencyDemo.run();
                 case "--gather" -> GathererDemo.run();
                 case "--scoped" -> ScopedValueDemo.run();
                 case "--primitive" -> PrimitivePatternDemo.run();
@@ -53,25 +50,6 @@ public class Main {
             System.err.println("Error executing demo: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    private static void runConcurrentDemo() throws Exception {
-        System.out.println("=== Running Structured Concurrency Demos ===");
-
-        System.out.println("\n1. ShutdownOnFailure scope (DataFetcher):");
-        DataFetcher.run();
-
-        System.out.println("\n2. ContinueOnFailure scope (HeatMapBuilder):");
-        HeatMapBuilder.run();
-
-        System.out.println("\n3. Deadline-capped scope (DeadlineDemo):");
-        DeadlineDemo.run();
-
-        System.out.println("\n4. FirstWin scope (FirstWinDemo):");
-        FirstWinDemo.run();
-
-        System.out.println("\n5. Nested Scopes demo (NestedScopesDemo):");
-        NestedScopesDemo.run();
     }
 
     private static void runModelDemo() {
@@ -116,15 +94,15 @@ public class Main {
             Usage: java --enable-preview --enable-native-access=ALL-UNNAMED -jar jdk22-25-cli-demo.jar [COMMAND]
 
             Commands:
-              --concurrent     Run structured concurrency demos
-              --gather         Run stream gatherers demo
-              --scoped         Run scoped values demo
-              --primitive      Run primitive pattern switch demo
-              --native TEXT    Run FFM API demo with TEXT as input
-              --generate PATH  Generate a HelloWorld class file at the specified path
-              --generate-complex PATH  Generate a MathUtil class with multiple methods
-              --model          Run model class demos (record patterns, unnamed patterns, flexible constructor bodies)
-              --help           Show this help message
+              --concurrent          Run structured concurrency demos
+              --gather              Run stream gatherers demo
+              --scoped              Run scoped values demo
+              --primitive           Run primitive pattern switch demo
+              --native              Run FFM API demo with TEXT as input
+              --generate PATH       Generate a HelloWorld class file at the specified path
+              --generate-complex    PATH  Generate a MathUtil class with multiple methods
+              --model               Run model class demos (record patterns, unnamed patterns, flexible constructor bodies)
+              --help                Show this help message
             """);
     }
 }

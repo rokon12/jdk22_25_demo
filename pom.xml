@@ -14,6 +14,10 @@
         <shade.plugin.version>3.5.0</shade.plugin.version>
     </properties>
 
+    <dependencies>
+
+    </dependencies>
+
     <build>
         <plugins>
             <!-- Compile with preview features enabled -->
