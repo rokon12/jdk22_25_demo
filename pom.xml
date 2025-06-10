@@ -29,6 +29,8 @@
                     <release>${maven.compiler.release}</release>
                     <compilerArgs>
                         <arg>--enable-preview</arg>
+                        <arg>--add-modules</arg>
+                        <arg>jdk.incubator.vector</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
@@ -65,7 +67,7 @@
                         <enable-preview/>
                     </systemProperties>
                     <environmentVariables>
-                        <JAVA_TOOL_OPTIONS>--enable-preview --enable-native-access=ALL-UNNAMED</JAVA_TOOL_OPTIONS>
+                        <JAVA_TOOL_OPTIONS>--enable-preview --enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.vector</JAVA_TOOL_OPTIONS>
                     </environmentVariables>
                 </configuration>
             </plugin>

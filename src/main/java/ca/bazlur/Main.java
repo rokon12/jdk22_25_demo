@@ -7,6 +7,9 @@ import ca.bazlur.model.DataPoint;
 import ca.bazlur.model.UserInputTask;
 import ca.bazlur.scopevalue.ScopedValueDemo;
 import ca.bazlur.stablevalue.StableValuesDemo;
+import ca.bazlur.SequencedCollectionsDemo;
+import ca.bazlur.StatementsBeforeSuperDemo;
+import ca.bazlur.VectorApiDemo;
 
 /**
  * CLI parser & orchestrator for JDK 22-25 feature demos.
@@ -26,6 +29,9 @@ public class Main {
                 case "--primitive" -> PrimitivePatternDemo.run();
                 case "--native" -> NativeLibraryDemo.run();
                 case "--stable" -> StableValuesDemo.run();
+                case "--sequenced" -> SequencedCollectionsDemo.run();
+                case "--presuper" -> StatementsBeforeSuperDemo.run();
+                case "--vector" -> VectorApiDemo.run();
                 case "--generate" -> {
                     if (args.length < 2) {
                         System.out.println("Error: --generate requires an output path");
@@ -103,6 +109,9 @@ public class Main {
               --primitive           Run primitive pattern switch demo
               --native              Run FFM API demo with TEXT as input
               --stable              Run stable values demo
+              --sequenced           Run sequenced collections demo
+              --presuper            Run statements-before-super demo
+              --vector             Run Vector API demo
               --generate PATH       Generate a HelloWorld class file at the specified path
               --generate-complex    PATH  Generate a MathUtil class with multiple methods
               --model               Run model class demos (record patterns, unnamed patterns, flexible constructor bodies)

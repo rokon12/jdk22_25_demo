@@ -17,6 +17,10 @@ REM Function to display usage information
     echo   --scoped             Run scoped values demo
     echo   --primitive          Run primitive pattern switch demo
     echo   --native             Run Foreign Function & Memory API demo
+    echo   --sequenced          Run sequenced collections demo
+    echo   --stable             Run stable values demo
+    echo   --presuper           Run statements-before-super demo
+    echo   --vector             Run Vector API demo
     echo   --generate PATH      Generate a HelloWorld class file at the specified path
     echo   --generate-complex PATH  Generate a MathUtil class with multiple methods
     echo   --model              Run model class demos
@@ -25,6 +29,9 @@ REM Function to display usage information
     echo Examples:
     echo   run_demo.bat --build --concurrent    # Build and run concurrency demos
     echo   run_demo.bat --gather                # Run gatherers demo without building
+    echo   run_demo.bat --sequenced            # Run sequenced collections demo
+    echo   run_demo.bat --presuper             # Run statements-before-super demo
+    echo   run_demo.bat --vector               # Run Vector API demo
     echo.
     exit /b 0
 
@@ -72,6 +79,30 @@ REM Parse command line arguments
     )
     
     if "%~1"=="--native" (
+        set DEMO_ARGS=%~1
+        shift
+        goto parse_args
+    )
+
+    if "%~1"=="--sequenced" (
+        set DEMO_ARGS=%~1
+        shift
+        goto parse_args
+    )
+
+    if "%~1"=="--stable" (
+        set DEMO_ARGS=%~1
+        shift
+        goto parse_args
+    )
+
+    if "%~1"=="--presuper" (
+        set DEMO_ARGS=%~1
+        shift
+        goto parse_args
+    )
+
+    if "%~1"=="--vector" (
         set DEMO_ARGS=%~1
         shift
         goto parse_args
@@ -167,7 +198,7 @@ if not exist "%JAR_FILE%" (
 
 REM Run the demo
 echo Running demo with arguments: %DEMO_ARGS%
-java --enable-preview --enable-native-access=ALL-UNNAMED -jar "%JAR_FILE%" %DEMO_ARGS%
+java --enable-preview --enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.vector -jar "%JAR_FILE%" %DEMO_ARGS%
 
 REM Exit with the status of the Java command
 exit /b %ERRORLEVEL%

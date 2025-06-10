@@ -1,6 +1,6 @@
 # JDK 22-25 Feature Demo
 
-This project demonstrates various features introduced in JDK 25 Early Access builds. It serves as a showcase and learning resource for developers interested in exploring the latest Java language and API enhancements.
+This project demonstrates features introduced across JDK versions 22 through 25. It serves as a showcase and learning resource for developers interested in exploring the evolving Java language and API enhancements.
 
 ## Features Demonstrated
 
@@ -47,6 +47,9 @@ The project includes examples of the following JDK features:
 ### Other Features
 - Flexible constructor bodies
 - Model class demonstrations
+- Sequenced collections examples
+- Statements before super() example
+- Vector API demo
 
 ## Requirements
 
@@ -98,6 +101,10 @@ Options:
 - `--scoped`: Run scoped values demo
 - `--primitive`: Run primitive pattern switch demo
 - `--native`: Run Foreign Function & Memory API demo
+- `--sequenced`: Run sequenced collections demo
+- `--stable`: Run stable values demo
+- `--presuper`: Run statements-before-super demo
+- `--vector`: Run Vector API demo
 - `--generate PATH`: Generate a HelloWorld class file at the specified path
 - `--generate-complex PATH`: Generate a MathUtil class with multiple methods
 - `--model`: Run model class demos
@@ -124,6 +131,10 @@ Available commands:
 - `--scoped`: Run scoped values demo
 - `--primitive`: Run primitive pattern switch demo
 - `--native`: Run Foreign Function & Memory API demo
+- `--sequenced`: Run sequenced collections demo
+- `--stable`: Run stable values demo
+- `--presuper`: Run statements-before-super demo
+- `--vector`: Run Vector API demo
 - `--generate PATH`: Generate a HelloWorld class file at the specified path
 - `--generate-complex PATH`: Generate a MathUtil class with multiple methods
 - `--model`: Run model class demos (record patterns, unnamed patterns, flexible constructor bodies)
@@ -139,6 +150,8 @@ Available commands:
   - `gatherers/`: Stream gatherers examples
   - `model/`: Model classes for pattern matching demos
 - `native/`: Native C code for Foreign Function & Memory API demos
+
+Additional examples categorized by JDK version are listed in [`docs/jdk22-25-examples.md`](docs/jdk22-25-examples.md).
 
 ## License
 
