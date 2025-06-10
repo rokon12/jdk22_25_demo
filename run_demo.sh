@@ -16,6 +16,9 @@ show_usage() {
     echo "  --scoped             Run scoped values demo"
     echo "  --primitive          Run primitive pattern switch demo"
     echo "  --native             Run Foreign Function & Memory API demo"
+    echo "  --sequenced          Run sequenced collections demo"
+    echo "  --presuper           Run statements-before-super demo"
+    echo "  --vector             Run Vector API demo"
     echo "  --generate PATH      Generate a HelloWorld class file at the specified path"
     echo "  --generate-complex PATH  Generate a MathUtil class with multiple methods"
     echo "  --model              Run model class demos"
@@ -24,6 +27,9 @@ show_usage() {
     echo "Examples:"
     echo "  ./run_demo.sh --build --concurrent    # Build and run concurrency demos"
     echo "  ./run_demo.sh --gather                # Run gatherers demo without building"
+    echo "  ./run_demo.sh --sequenced            # Run sequenced collections demo"
+    echo "  ./run_demo.sh --presuper             # Run statements-before-super demo"
+    echo "  ./run_demo.sh --vector               # Run Vector API demo"
     echo ""
 }
 
@@ -42,7 +48,7 @@ while [[ $# -gt 0 ]]; do
             show_usage
             exit 0
             ;;
-        --concurrent|--gather|--scoped|--primitive|--native|--model)
+        --concurrent|--gather|--scoped|--primitive|--native|--model|--sequenced|--presuper|--vector)
             DEMO_ARGS="$1"
             shift
             ;;
@@ -108,7 +114,7 @@ fi
 
 # Run the demo
 echo "Running demo with arguments: $DEMO_ARGS"
-java --enable-preview --enable-native-access=ALL-UNNAMED -jar "$JAR_FILE" $DEMO_ARGS
+java --enable-preview --enable-native-access=ALL-UNNAMED --add-modules jdk.incubator.vector -jar "$JAR_FILE" $DEMO_ARGS
 
 # Exit with the status of the Java command
 exit $?
